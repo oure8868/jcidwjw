@@ -359,10 +359,10 @@ a.btn--radius {
     /* justify-content: center; */
     gap: 0 1rem;
     align-items: center;
-    margin: 2rem 0;
+    margin: 3rem 0;
     /* 縦をそろえるには幅を決めてあげる */
     width: 400px;
-    margin: 30px auto;
+    margin: 50px auto;
 }
 
 .register-section-details_flex div:first-child {
