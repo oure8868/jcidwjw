@@ -5,9 +5,9 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>商品一覧</title>
-	<link rel="stylesheet" href="/css/reset.css">
-	<link rel="stylesheet" href="/css/style.css">
+	<title>ブログ一覧</title>
+	<link rel="stylesheet" th:href="@{/css/reset.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -15,13 +15,13 @@
 		<!--スマートフォン-->
 		<nav class="menu">
 			<div class="logo">
-				<a href="#"><img src="/images/logo.png" alt=""></a>
+				<a href="#"><img th:src="@{/images/logo.png}" alt=""></a>
 			</div>
 			<div class="menu-contents">
 				<div class="menu-inner">
 					<ul>
 						<li class="menu__item"></li>
-						<li class="menu__item"><a href="">商品一覧</a></li>
+						<li class="menu__item"><a href="">ブログ一覧</a></li>
 					</ul>
 				</div>
 				<div class="menu-toggle_btn">
@@ -35,12 +35,12 @@
 		<nav class="pc">
 			<div class="pc-inner">
 				<div class="pc-logo">
-					<a href=""><img src="/images/logo.png" alt=""></a>
+					<a href=""><img th:src="@{/images/logo.png}" alt=""></a>
 				</div>
 				<ul class="pc-list">
-					<li class="pc-list__item" th:text="${adminName}"></li>
+					<li class="pc-list__item" th:text="${accountName}"></li>
 					<li class="pc-list__item"><a href="">ブログ一覧</a></li>
-					<li class="pc-list__item"><a th:href="@{/admin/logout}">ログアウト</a></li>
+					<li class="pc-list__item"><a th:href="@{/account/logout}">ログアウト</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -50,15 +50,15 @@
 			<h2>ブログ一覧</h2>
 			<section class="register-item">
 				<div class="all-view-register__button">
-					<a th:href="@{/product/register}" class="btn btn--orange btn--radius">ブログ登録</a>
+					<a th:href="@{/blog/register}" class="btn btn--orange btn--radius">ブログ登録</a>
 				</div>
 			</section>
 			<ul class="products">
-				<li th:each="product:${productList}">
-					<a th:href="@{/product/edit/{productId}(productId=${product.productId})}">
-						<img th:src="@{/product-img/{imagePath}(imagePath=${product.productImage})}" alt="">
-						<p th:text="${product.productName}"></p><br>
-						<p th:text="${product.productCategory}"></p>
+				<li th:each="blog:${blogList}">
+					<a th:href="@{/blog/edit/{blogId}(blogtId=${blog.blogId})}">
+						<img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}" alt="写真">
+						<p th:text="${blog.blogTitle}"></p><br>
+						<p th:text="${blog.categoryName}"></p>
 					</a>
 				</li>
 
