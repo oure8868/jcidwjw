@@ -38,7 +38,7 @@ public class BlogEditController {
 			if (blog == null) {
 				return "redirect:/blog/list";
 			} else {
-				model.addAttribute("adminName", account.getAccountName());
+				model.addAttribute("accountName", account.getAccountName());
 				model.addAttribute("blog", blog);
 				return "blog_edit.html";
 			}
@@ -48,10 +48,10 @@ public class BlogEditController {
 
 	@PostMapping("/blog/edit/process")
 	public String blogUpdate(
-			@RequestParam String blogName, 
-			@RequestParam String blogCategory,
+			@RequestParam String blogTitle, 
+			@RequestParam String categoryName,
 			@RequestParam MultipartFile blogImage, 
-			@RequestParam String blogDescription,
+			@RequestParam String article,
 			@RequestParam Long blogId) {
 		Account account = (Account) session.getAttribute("loginAccountInfo");
 		if (account == null) {
@@ -65,7 +65,7 @@ public class BlogEditController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			if (blogService.blogUpdate(blogId, blogCategory, blogDescription, fileName, blogName,
+			if (blogService.blogUpdate(blogId, categoryName, article, fileName, blogTitle,
 					account.getAccountId())) {
 				return "redirect:/blog/list";
 			} else {

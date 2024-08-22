@@ -45,6 +45,11 @@ public class BlogService {
 
 	}
 	
+	
+//	顯示編輯畫面時的檢查
+//	如果blogId == null ，null
+//			如果不是
+//			findByBlogId的信息傳遞給控制臺class
 	public Blog blogEditCheck(Long blogId) {
 		if(blogId == null) {
 			return null;
@@ -74,12 +79,12 @@ public class BlogService {
 			return true;
 		}
 	}
-//	public boolean deleteBlog(Long blogId) {
-//		if(blogId == null) {
-//			return false;
-//		} else {
-//			blogDao.deleteByBlogId(blogId);
-//			return true;
-//		}
-//	}
+	public boolean deleteBlog(Long blogId) {
+		if(blogId == null) {
+			return false;
+		} else {
+			blogDao.deleteByBlogId(blogId);
+			return true;
+		}
+	}
 }

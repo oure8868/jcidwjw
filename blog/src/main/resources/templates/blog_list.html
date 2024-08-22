@@ -55,7 +55,7 @@
 			</section>
 			<ul class="products">
 				<li th:each="blog:${blogList}">
-					<a th:href="@{/blog/edit/{blogId}(blogtId=${blog.blogId})}">
+					<a th:href="@{/blog/edit/{blogId}(blogId=${blog.blogId})}">
 						<img th:src="@{/blog-img/{imagePath}(imagePath=${blog.blogImage})}" alt="写真">
 						<p th:text="${blog.blogTitle}"></p><br>
 						<p th:text="${blog.categoryName}"></p>
