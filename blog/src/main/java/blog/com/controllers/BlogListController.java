@@ -13,20 +13,28 @@ import blog.com.services.BlogService;
 import jakarta.servlet.http.HttpSession;
 @Controller
 public class BlogListController {
+	
+//	Sessionが使えるように宣言
 	@Autowired
 	private HttpSession session;
 
+//	class BlogServiceが使えるように宣言
 	@Autowired
 	private BlogService blogService;
 
+//	商品一覧画面を表示する
 	@GetMapping("/blog/list")
 	public String getBlogList(Model model) {
+//		セッションからログインしている人の情報を取得
 		Account account = (Account) session.getAttribute("loginAccountInfo");
-//		session.setAttribute("loginAccountInfo", account);
-//		return "redirect:/blog/list";
+		
+//もし、account=null login画面にリダイレクトする
+//そうでない場合
+//loginしている人の名前の情報を画面に渡して商品一覧のhtmlを表示
 		if (account == null) {
 			return "redirect:/account/login";
 		} else {
+//			商品の情報を取得する
 			List<Blog> blogList = blogService.selectAllBlogList(account.getAccountId());
 
 			model.addAttribute("accountName", account.getAccountName());

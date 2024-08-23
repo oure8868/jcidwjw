@@ -9,24 +9,32 @@ import jakarta.persistence.Id;
 public class Account {
 //	account_id設定
 	@Id
+//	自動追加id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long accountId;
-		
+	
+//	account_name
 	private String accountName;
 
+//	account_email
 	private String accountEmail;
 	
+//	account_password
 	private String password;
 
+//	空のコンストラクタ
 	public Account() {
 	}
 
+//	コンストラクタ
 	public Account(String accountName, String accountEmail, String password) {
 		this.accountName = accountName;
 		this.accountEmail = accountEmail;
 		this.password = password;
 	}
 
+	
+//	ゲッターとセッター
 	public Long getAccountId() {
 		return accountId;
 	}

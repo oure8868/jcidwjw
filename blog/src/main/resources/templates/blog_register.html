@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>商品一覧</title>
+	<title>ブログ一覧</title>
 	<link rel="stylesheet" th:href="@{/css/reset.css}">
 	<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
@@ -21,7 +21,7 @@
 				<div class="menu-inner">
 					<ul>
 						<li class="menu__item"></li>
-						<li class="menu__item"><a href="">商品一覧</a></li>
+						<li class="menu__item"><a href="">ブログ一覧</a></li>
 					</ul>
 				</div>
 				<div class="menu-toggle_btn">
@@ -48,11 +48,11 @@
 	<main>
 		<div class="main-inner">
 			<section class="register-section">
-				<h2>ブログ登録画面</h2>
+				<h2>日本を代表する製品ブログ登録画面</h2>
 				<form th:action="@{/blog/register/process}" method="post" enctype="multipart/form-data">
 					<div class="register-section-details">
 						<div class="register-section-details_flex">
-							<div class="register-section-details_flex_div">商品名</div>
+							<div class="register-section-details_flex_div">ブログ名</div>
 							<input type="text" name="blogTitle" value="" id="adminName">
 						</div>
 						<div class="register-section-details_flex">
@@ -65,11 +65,11 @@
 							</select>
 						</div>
 						<div class="register-section-details_flex">
-							<div class="register-section-details_flex_div">商品画像</div>
+							<div class="register-section-details_flex_div">ブログ画像</div>
 							<input type="file" name="blogImage">
 						</div>
 						<div class="register-section-details_flex">
-							<div class="register-section-details_flex_div">商品の説明</div>
+							<div class="register-section-details_flex_div">ブログの説明</div>
 							<textarea name="article" placeholder="商品の説明文"></textarea>
 						</div>
 

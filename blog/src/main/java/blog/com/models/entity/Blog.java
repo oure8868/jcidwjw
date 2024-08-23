@@ -7,16 +7,32 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Blog {
+//	blog_id設定
 	@Id
+//	自動追加id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long blogId;
+	
+//	blog_titleの設定
 	private String blogTitle;
+	
+//	category_nameの設定
 	private String categoryName;
+	
+//	blog_imageの設定
 	private String blogImage;
+	
+//	blog_titleの設定
 	private String article;
+	
+//	account_idの設定
 	private Long accountId;
+	
+	//	空のコンストラクタ
 	public Blog() {
 	}
+	
+//	コンストラクタ
 	public Blog(
 			String blogTitle, 
 			String categoryName, 
@@ -29,6 +45,8 @@ public class Blog {
 		this.article = article;
 		this.accountId = accountId;
 	}
+	
+//	ゲッターとセッター
 	public Long getBlogId() {
 		return blogId;
 	}

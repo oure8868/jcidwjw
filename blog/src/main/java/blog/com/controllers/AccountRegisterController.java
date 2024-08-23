@@ -11,23 +11,27 @@ import blog.com.services.AccountService;
 
 @Controller
 public class AccountRegisterController {
+	
+//	AccountService class を使えるようにする
 	@Autowired
 	private AccountService accountService;
 
+//	登録画面の表示
 	@GetMapping("/account/register")
 	public String getAccountRegisterPage() {
 		
 		return "account_register.html";
 	}
 
+//	登録処理
 	@PostMapping("/account/register/process")
 	public String accountRegisterProcess(
 			@RequestParam String accountName, 
 			@RequestParam String accountEmail,
 			@RequestParam String password) {
 		
-//		如果createAccount是true 向account_login.html遷移
-//		如果不是，向account_register.html遷移
+//		もし、createAccountがtrue account_login.htmlに遷移
+//		そうでない場合、account_register.htmlにとどまります
 		if (accountService.createAccount(accountEmail, accountName, password)) {
 			return "account_login.html";
 		} else {

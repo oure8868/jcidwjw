@@ -8,14 +8,15 @@ import blog.com.models.entity.Account;
 
 @Service
 public class AccountService {
+//	interface AccountDao  を使えるようにする
 	@Autowired
 	private AccountDao accountDao;
 
-//	保存處理（登陸處理
-//	如果accountEmail)==null 時登陸處理
-//	使用save方法登陸處理
-//	能保存時true
-//	不能保存時 保存處理失敗false
+//	保存処理（登録）処理
+//	もしfingByAccountEmail==null 時登録処理
+//	saveメソッドを使用して登録処理をする
+//	保存ができたらtrue
+//	そうでない場合、保存処理失敗false
 	public boolean createAccount(String accountEmail, String accountName, String password) {
 		if (accountDao.findByAccountEmail(accountEmail) == null) {
 			accountDao.save(new Account(accountName, accountEmail, password));
@@ -25,10 +26,10 @@ public class AccountService {
 		}
 	}
 
-//	login
-//	如果email password使用findByAccountEmailAndPassword不存在的場合==null
-//上述場合，控制台class輸出不存在null的通知
-//	非上述場合 login人的信息傳遞給控制台class
+//	login処理
+//	もし、emailと passwordがfindByAccountEmailAndPasswordを使用して存在しなかった場合（==nullの場合）
+//　その場合は、存在しないNULLであることをコントローラclassにしらせる
+//	そうでない場合、loginしている人の情報をコントローラーclassに渡す
 	public Account loginCheck(String accountEmail, String password) {
 		Account account = accountDao.findByAccountEmailAndPassword(accountEmail, password);
 		if (account == null) {

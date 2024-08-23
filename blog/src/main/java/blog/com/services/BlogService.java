@@ -13,22 +13,22 @@ public class BlogService {
 	@Autowired
 	private BlogDao blogDao;
 
-//	檢查博客一覽
-//	如果accountId == null 作爲null返回值
-//	findAll内容發送給控制臺class
+//	商品一覽のチェック
+//	もしaccountId == null 戻り値としてnull
+//	findAll内容をコントローラーclassに渡す
 	public List<Blog> selectAllBlogList(Long accountId) {
 		if (accountId == null) {
 			return null;
 		} else {
-			return blogDao.findAll();
+			return blogDao.findByAccountId(accountId);
 		}
 	}
 
-//	檢查商品登陸處理
-//	如果findByblogTitle==null
-//			保存
+//	商品の登録処理チェック
+//	もし、findByblogTitle==null
+//			処理
 //			true
-//			如果不是
+//			そうでない場合
 //			false
 	public boolean createBlog(
 			String blogTitle, 
@@ -36,20 +36,27 @@ public class BlogService {
 			String blogImage,
 			String article, 
 			Long accountId) {
-		if (blogDao.findByBlogTitle(blogTitle) == null) {
-			blogDao.save(new Blog(blogTitle, categoryName, blogImage, article, accountId));
-			return true;
-		} else {
-			return false;
-		}
+		// 基於 blogTitle 和 accountId 進行檢查
+	    if (blogDao.findByBlogTitleAndAccountId(blogTitle, accountId) == null) {
+	        blogDao.save(new Blog(blogTitle, categoryName, blogImage, article, accountId));
+	        return true;
+	    } else {
+	        return false;
+	    }
+//		if (blogDao.findByBlogTitle(blogTitle) == null) {
+//			blogDao.save(new Blog(blogTitle, categoryName, blogImage, article, accountId));
+//			return true;
+//		} else {
+//			return false;
+//		}
 
 	}
 	
 	
-//	顯示編輯畫面時的檢查
-//	如果blogId == null ，null
-//			如果不是
-//			findByBlogId的信息傳遞給控制臺class
+//	編集画面を表示する時のチェック
+//	もし、blogId == null ，null
+//	そうでない場合、
+//	findByBlogIdの情報をコントローラーclassに渡す
 	public Blog blogEditCheck(Long blogId) {
 		if(blogId == null) {
 			return null;
@@ -58,6 +65,15 @@ public class BlogService {
 		}
 	}
 	
+//	更新処理のチェックの
+	
+//	もし、blogId=nullだったら、更新処理はしない
+//	false
+//	そうでない場合
+//	更新処理をする
+//	コントローラーclassからもらった、blogIdを使って、編集する前のデータを取得
+//	変更するべきところだけ、セッターを使用してデータの更新をする
+//	trueを返す
 	public boolean blogUpdate(
 			Long blogId, 
 			String categoryName,
@@ -79,6 +95,13 @@ public class BlogService {
 			return true;
 		}
 	}
+	
+//	削除処理のチェック
+//	もし、コントローラーからもたったblogIdがnullであれば
+//	削除できないこと　false
+//	そうでない場合
+//	deleteByBlogIdを使用して商品の削除
+//	true
 	public boolean deleteBlog(Long blogId) {
 		if(blogId == null) {
 			return false;

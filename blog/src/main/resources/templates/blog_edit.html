@@ -52,7 +52,7 @@
 				<form th:action="@{/blog/edit/process}" method="post" enctype="multipart/form-data">
 					<div class="register-section-details">
 						<div class="register-section-details_flex">
-							<div>ブログ商品名</div>
+							<div>ブログ名</div>
 							<input type="text" name="blogTitle" th:value="${blog.blogTitle}">
 						</div>
 						<div class="register-section-details_flex">
@@ -67,11 +67,11 @@
 							</select>
 						</div>
 						<div class="register-section-details_flex">
-							<div>ブログ商品画像</div>
+							<div>ブログ画像</div>
 							<input type="file" name="blogImage">
 						</div>
 						<div class="register-section-details_flex">
-							<div>ブログ商品の説明</div>
+							<div>ブログの説明</div>
 							<textarea name="article" placeholder="商品の説明文" th:text="${blog.article}"></textarea>
 						</div>
 
