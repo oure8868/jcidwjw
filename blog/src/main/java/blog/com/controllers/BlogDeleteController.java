@@ -35,9 +35,6 @@ public class BlogDeleteController {
 //				編集画面にリダイレクトする
 				return "redirect:/blog/edit" + blogId;
 			}
-			
-//			そうでない場合
-//			編集画面にリダイレクトする
-		}
+					}
 	}
 }
