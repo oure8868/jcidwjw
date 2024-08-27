@@ -25,7 +25,7 @@ public class BlogService {
 	}
 
 //	商品の登録処理チェック
-//	もし、findByblogTitle==null
+//	もし、findByblogTitleAndAccountId==null
 //			処理
 //			true
 //			そうでない場合
@@ -36,7 +36,7 @@ public class BlogService {
 			String blogImage,
 			String article, 
 			Long accountId) {
-		// 基於 blogTitle 和 accountId 進行檢查
+		// blogTitle と accountId に基づいてチェックする
 	    if (blogDao.findByBlogTitleAndAccountId(blogTitle, accountId) == null) {
 	        blogDao.save(new Blog(blogTitle, categoryName, blogImage, article, accountId));
 	        return true;

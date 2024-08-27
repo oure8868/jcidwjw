@@ -17,6 +17,6 @@ public class AccountLogoutController {
 	public String accountLogout() {
 //		セッションの無効化
 		session.invalidate();
-		return "redirect:/account/login";
+		return "redirect:/account/register";
 	}
 }

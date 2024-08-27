@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理者登録画面</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
         <!--スマートフォン-->
         <nav class="menu">
             <div class="logo">
-                <a href="#"><img src="/images/logo.png" alt=""></a>
+                <a href="#"><img th:src="@{/images/logo.png}" alt=""></a>
             </div>
             <div class="menu-contents">
                 <div class="menu-inner">
@@ -34,7 +34,7 @@
         <nav class="pc">
             <div class="pc-inner">
                 <div class="pc-logo">
-                    <a href=""><img src="/images/logo.png" alt=""></a>
+                    <a href=""><img th:src="@{/images/logo.png}" alt=""></a>
                 </div>
                 <ul class="pc-list">
                     <li class="pc-list__item"><a th:href="@{/account/login}">ログイン</a></li>
@@ -61,7 +61,7 @@
                             <input type="text" name="password" value="">
                         </div>
                     </div>
-                    <div class="register-section-details_flex">
+                    <div class="register-section-details_button">
                         <button class="register">登録</button>
                         <button class="back-btn" onclick="history.back();" type="button">戻る</button>
                     </div>
